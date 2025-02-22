@@ -1,4 +1,9 @@
+const server = Bun.serve({
+  port: 3000,
+  hostname: "0.0.0.0",
+  fetch(req) {
+    return new Response("Hello from Bun server in Docker!");
+  },
+});
 
-export function sayHelloWorld(world: string) {
-  return `Hello ${world}`;
-}
+console.log(`Server running at http://${server.hostname}:${server.port}`);
